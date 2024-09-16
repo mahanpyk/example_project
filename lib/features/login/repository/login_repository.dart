@@ -1,18 +1,21 @@
-import 'package:sentry_flutter/sentry_flutter.dart';
-
-abstract class LoginRepository extends BaseRepository {
+abstract class LoginRepository {
   Future<LoginResponseModel> login({required LoginRequestModel requestModel});
 }
 
 class LoginRepositoryImpl extends LoginRepository {
+  LoginRepositoryImpl(this._repositorySingleton);
+
+  final RepositorySingleton _repositorySingleton;
+
   @override
-  Future<LoginResponseModel> login(
-      {required LoginRequestModel requestModel}) async {
-    final ResponseModel response = await request(
-      requestData: RequestsParamsEnum.login,
+  Future<LoginResponseModel> login({required LoginRequestModel requestModel}) async {
+    final ResponseModel response = await _repositorySingleton.request(
+      url: 'login',
+      method: 'POST',
       data: requestModel.toJson(),
       requiredToken: false,
     );
+
     LoginResponseModel result = LoginResponseModel();
     try {
       if (response.success) {
@@ -20,10 +23,6 @@ class LoginRepositoryImpl extends LoginRepository {
         result.statusCode = response.statusCode;
         return result;
       } else {
-        await Sentry.captureException(
-          response.body,
-          stackTrace: response.message,
-        );
         result.message = response.message;
         result.statusCode = response.statusCode;
         return result;
