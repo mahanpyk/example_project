@@ -11,7 +11,7 @@ class LoginRepositoryImpl extends LoginRepository {
   Future<LoginResponseModel> login({required LoginRequestModel requestModel}) async {
     final ResponseModel response = await _repositorySingleton.request(
       url: 'login',
-      method: 'POST',
+      method: RequestMethodEnum.POST.name,
       data: requestModel.toJson(),
       requiredToken: false,
     );

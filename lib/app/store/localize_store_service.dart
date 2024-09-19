@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:get/get.dart';
 
 class LocalizeStoreService {
@@ -19,6 +17,6 @@ class LocalizeStoreService {
 
   LanguageEnum get languages {
     LanguageEnum? lang = _storage.read(AppConstants.LANGUAGE);
-    return lang ?? LanguageEnum.PERSIAN;
+    return lang ?? LanguageEnum.ENGLISH; // Default to Persian
   }
 }

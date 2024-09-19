@@ -7,7 +7,7 @@ class RepositorySingleton {
 
   static final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: 'YOUR_BASE_URL',
+      baseUrl: AppConstants.BASE_URL,
       // آدرس بیس URL پروژه شما
       receiveTimeout: const Duration(seconds: 15),
       sendTimeout: const Duration(seconds: 15),

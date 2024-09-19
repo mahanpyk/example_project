@@ -3,16 +3,18 @@ import 'dart:ui';
 import 'package:get/get.dart';
 
 class AppLocalization extends Translations {
+  // Load the language when the app starts
   AppLocalization() {
-    // locale = _getLocaleFromLanguage(LocalizeStoreService.to.languages);
+    locale = _getLocaleFromLanguage(LocalizeStoreService.to.languages);
   }
 
-  static Locale locale = const Locale('fa', 'IR');
-  static const fallbackLocale = Locale('fa', 'IR');
+  static Locale? locale;
+  static const fallbackLocale = Locale('en', 'US');
   static final languages = [
     LanguageEnum.ENGLISH,
     LanguageEnum.PERSIAN,
   ];
+
   static final locales = [
     const Locale('en', 'US'),
     const Locale('fa', 'IR'),
@@ -24,8 +26,10 @@ class AppLocalization extends Translations {
         'fa_IR': faIR,
       };
 
-  void changeLocale(LanguageEnum lang) {
+  void changeLocale(LanguageEnum lang) async {
     final locale = _getLocaleFromLanguage(lang);
+    await LocalizeStoreService.to
+        .saveLanguages(language: lang); // save the selected language
     Get.updateLocale(locale);
   }
 
