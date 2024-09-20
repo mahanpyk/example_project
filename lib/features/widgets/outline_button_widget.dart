@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 
 class OutlineButtonWidget extends StatelessWidget {
   const OutlineButtonWidget({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.color,
     this.buttonTitle,
     this.child,
     this.height = 48,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onTap;
   final Color color;
@@ -32,9 +32,10 @@ class OutlineButtonWidget extends StatelessWidget {
             ),
           ),
           child: child ??
-              Text(buttonTitle ?? '',
-                  style: Get.textTheme.labelLarge!
-                      .copyWith(color: AppColors.gray[700])),
+              Text(
+                buttonTitle ?? '',
+                style: Get.textTheme.labelLarge!.copyWith(color: AppColors.gray[700]),
+              ),
         ),
       ),
     );

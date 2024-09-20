@@ -24,8 +24,8 @@ class AppDialog {
   Future<void> showAppDialog() async {
     return Get.dialog(
       barrierDismissible: true,
-      WillPopScope(
-        onWillPop: () async => false,
+      PopScope(
+        canPop: false,
         child: AlertDialog(
           content: SingleChildScrollView(
             child: Column(

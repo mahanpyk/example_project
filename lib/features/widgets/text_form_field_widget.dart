@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
-  const TextFormFieldWidget(
-      {Key? key,
-      this.controller,
-      this.keyboardType,
-      this.maxLength,
-      this.onChanged,
-      this.validator,
-      this.label,
-      this.hintText,
-      this.readOnly = false,
-      this.onTap,
-      this.prefixIcon})
-      : super(key: key);
+  const TextFormFieldWidget({
+    super.key,
+    this.controller,
+    this.keyboardType,
+    this.maxLength,
+    this.onChanged,
+    this.validator,
+    this.label,
+    this.hintText,
+    this.readOnly = false,
+    this.onTap,
+    this.prefixIcon,
+  });
+
   final TextEditingController? controller;
   final TextInputType? keyboardType;
 

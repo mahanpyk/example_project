@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 
 class FillButtonWidget extends StatelessWidget {
   const FillButtonWidget({
-    Key? key,
+    super.key,
     required this.isLoading,
     required this.onTap,
     required this.buttonTitle,
     this.buttonColor = AppColors.primary,
     this.enable = true,
     this.height = 48,
-  }) : super(key: key);
+  });
 
   final bool isLoading;
   final bool enable;

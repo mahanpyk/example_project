@@ -21,7 +21,7 @@ class RepositorySingleton {
         return true;
       },
     ),
-  )..interceptors.addAll([LoggingInterceptor()]);
+  )..interceptors.addAll([LoggingInterceptor(_dio)]);
 
   static final RepositorySingleton _instance = RepositorySingleton._internal();
 
@@ -35,7 +35,7 @@ class RepositorySingleton {
     bool requiredToken = true,
   }) async {
     try {
-      if (ConnectivityService.instance.hasConnection) {
+      if (ConnectivityServiceSingleton.instance.hasConnection) {
         if (requiredToken) {
           String? token = await UserStoreService.to.getToken();
           headers = headers ?? {};
